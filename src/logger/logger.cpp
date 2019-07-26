@@ -4,8 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
-   {   {   {   {   
-namespacdeBUDEgger {
+namespace Logger {
     Logger logger;
 
     std::string logLevelToString(const LogLevel level) {
