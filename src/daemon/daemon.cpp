@@ -31,11 +31,9 @@ void main() {
     }
     std::cout << "INFO: Loaded " << checkpoints.size() << " checkpoints";
     std::cout << "INFO: Launching P2p server";
-    std::string e = p2p::launchsrv();
-    if (!e) {
+    if (!p2p::launchsrv()) {
         // Launch failed, abort
         throw std::runtime_error("Failed to start P2p server, exiting...");
-       std::cout << "ERROR: " << e;
    }else {
         std::cout << "P2p server running with peer ID: " << p2p::getId();
         //TODO: finish daemon code
