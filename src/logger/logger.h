@@ -11,7 +11,7 @@ namespace Logger
     enum LogLevel
  
         DEV = 5,
-		    DEBUG = 4,
+ 	DEBUG = 4,
         INFO = 3,
         WARNING = 2,
         FATAL = 1,
@@ -45,8 +45,8 @@ namespace Logger
                     const std::vector<LogCategory> categories)> callback);
 
         private:
-            /* Logging is disabled by default */
-            LogLevel m_logLevel = DISABLED;
+            /* Logging is info by default */
+            LogLevel m_logLevel = INFO;
 
             std::function<void(
                 const std::string prettyMessage,
