@@ -2,6 +2,7 @@
 A c/c++ implementation of a blockchain based cryptocurrency. Join our discord for more info http://discord.gg/R3UhgCk
 
 ## TODO:
+- [ ] Fill out the todo list
 - [ ] **Blockchain**:
 -   [ ] Store blockchain on drive rather than current implementatio where it is stored on ram! 
 - [ ] **P2p**:
