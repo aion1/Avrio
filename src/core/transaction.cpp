@@ -19,3 +19,23 @@ struct tx_data {
     uint64_t unlockTime; // The height at which the coins unlock (become spendable) at.
     time_t timestamp;
 };
+
+bool validateTx(tx_data transaction) {
+  uint64_t inputsCount = inputs.transaction.size();
+  uint64_t outputsCount = outputs.transaction.size();
+  for (uint64_t i = 0; i < outputsCount; i++) {
+    uint64_t outputsValue += outputs.transaction.at(i)
+  }
+  if (amount.transaction != outputsValue) {
+    return false;
+  }else {
+    for (uint64_t i = 0; i < inputsCount; i++) {
+      uint64_t inputsValue += inputs.transaction.at(i)
+    }
+    if (inputsCount != outputsCount) {
+      returun false;
+    }else if (amount.transaction != inputsValue) {
+      return false;
+    }
+  }
+}
