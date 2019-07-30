@@ -29,7 +29,6 @@ Blockchain::Blockchain() {
 }
 // Add a block
 void Blockchain::AddBlock(Block block) {
-     uint64_t CurrentHeight = getHeight();
      if (!verify(Block block)) {
          break;
      }else{
@@ -51,3 +50,5 @@ uint8_t getVersion(height) {
 Block Blockchain::_GetLastBlock() const {
     return _vChain.back();
 }
+Block Blockchain::getBlockDataForHeight(uint64_t height) {
+    return _vChain.at(height);
