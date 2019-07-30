@@ -2,10 +2,9 @@
 #include <src/core/blockchain.cpp>
 
 struct mempool {
-    int id;
-    float percentage;
-    // tx details
-    struct tx_data tx_data;
+    std::vector<int> id;
+    std::vector<float> percentage;
+    std::vector<tx_data> tx;  // tx details
 };
 
 void initMempool() {
