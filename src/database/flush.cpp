@@ -10,14 +10,15 @@
 #inlcude <src/database/write.cpp>
 #include <src/database/read.cpp>
 #include <src/database/main.cpp>
-
-void main() {
-  if (notInitilised(database) { // TODO: make a function that checks what modules are up and running
-    // We should not have called this yet, something must have gone wrong
-    exit (EXIT_FAILURE);
-  }
-  else {
-  // TODO: Lauch flsuh daemon (every 360 secconds (6 mins) saves blocks (other than top (latest) block)
-  // - to db and then removes them from RAM
+namespace database {
+  void main() {
+    if (notInitilised(database) { // TODO: make a function that checks what modules are up and running
+      // We should not have called this yet, something must have gone wrong
+      exit (EXIT_FAILURE);
+    }
+    else {
+    // TODO: Lauch flsuh daemon (every 360 secconds (6 mins) saves blocks (other than top (latest) block)
+    // - to db and then removes them from RAM
+    }
   }
 }
