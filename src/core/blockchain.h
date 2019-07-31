@@ -5,8 +5,7 @@ public:
     void AddBlock(Block bNew);
  
 private:
-    uint32_t _nDifficulty;
-    vector<Block> _vChain;
+    vector<Block> Chain;
  
     Block _GetLastBlock() const;
 };
