@@ -1,0 +1,9 @@
+sudo: required
+dist: trusty
+os: linux
+language: minimal
+script:
+    - git submodule init && git submodule update
+    - export TRAVIS_COMMIT_LOG=`git log --format=fuller -1`
+    - OUTDIR=$BASE_OUTDIR/$TRAVIS_PULL_REQUEST/$TRAVIS_JOB_NUMBER-$HOST
+    - $DOCKER_EXEC bash -c "mkdir build && cd build && cmake .. && make"
