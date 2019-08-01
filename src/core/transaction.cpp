@@ -10,7 +10,7 @@ struct txOutput {
   uint64_t scriptSig; // The scriptSig of the block (https://en.bitcoin.it/wiki/Script)
 };
 
-struct tx_data {
+struct Transaction {
     uint64_t amount;
     std::string senderKey;
     std::string receiverKey;
@@ -20,7 +20,7 @@ struct tx_data {
     time_t timestamp;
 };
 
-bool validateTx(tx_data transaction) {
+bool validateTx(Transaction transaction) {
   uint64_t inputsCount = inputs.transaction.size();
   uint64_t outputsCount = outputs.transaction.size();
   for (uint64_t i = 0; i < outputsCount; i++) {
