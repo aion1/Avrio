@@ -1,39 +1,57 @@
 #include <stdint.h>
 #include <math.h>
+#include <ctime>
 #include <stdlib.h>
+#include <string>
+#include <src/core/transaction.cpp>
 
-uint8_t* buildTx(uint8_t* in, uint8_t* out, uint64_t fee, uint64_t amount, uint64_t nonce) 
-{
-  uint64_t* tx_64    = (uint64_t*)malloc(90); // Raw transaction data (26) + signature (64)
-	uint8_t*  tx       = (uint8_t*)tx_64; 
-	*tx_64 = nonce;
-	tx_64[1] = amount;
-  tx_64[2] = fee;
-  for(uint8_t i=0;i<5;i++) tx[i+16] = in[i];		
-	for(uint8_t i=0;i<5;i++) tx[i+21] = out[i];
-  return tx;
-}
-// Sign basic TX, i need to implement Ring CTs to make transactions private.
-void signTx(uint8_t* rawTx, uint8_t* publicKey, uint8_t* privateKey){
-	sign(&rawTx[26], publicKey, privateKey, rawTx, 26); // Signature = 64 bytes, raw tx = 24 | total = 90 bytes
-}
-// Build Coinbase tx. No ins only a out becuase this is what create tx inputs.
-uint8_t* buildCoinbaseTx(uint8_t* out, uint64_t amount){
-	uint8_t* tx = (uint8_t*)malloc(9);
-	uint64_t* amount_8    = (uint64_t*)&amount;
-	for(uint8_t i=0;i<5;i++) tx[i] = out[i];
-	*(uint32_t*)&out[5] = amount;
-	return tx;
-}
-void blockHeader(uint8_t* publicKey, uint8_t* transactions, uint8_t* prevBlockHash, uint64_t txMemory, uint64_t difficulty, uint32_t fee, uint32_t timestamp, uint8_t* out, uint64_t height){
-	uint8_t  root[64]      = {0};
-	uint32_t reward        = getCoinbaseAmmount(height);
-	uint8_t* coinbase      = buildCoinbaseTx(publicKey, reward);
-	
-  blakesl(transactions, txMemory, prevBlockHash, 64, root);
-	for(uint8_t i=0; i<64; i++) out[i] = root[i];
-	*(uint64_t*)&out[64] = txMemory;
-	*(uint32_t*)&out[72] = timestamp;
-	for(uint8_t i=0; i<12; i++) out[i+76] = coinbase[i];
-	// Nonce = 8 bytes (e.g. 45958478, 74808583)
+namespace mainChain { // These commands are for the main chain only, NOT wallet chains
+  struct Blockheader {
+      uint8_t version; // version of the coin (eg 1, 2,3)
+      std::string nodePubKey; // Public key of the Full Node that is creating this block
+      std::string prevHash; // Hash of the last Block
+      uint64_t timestamp; // Time this block was created (UNIX timestamp)
+  };
+  
+  uint8_t* buildTx(txInput in, txOutput out, uint64_t fee, uint64_t amount, uint64_t unlockTime=0, std::string sender, std::string reciever)
+  {
+      Transaction tx;
+      tx.amount = amount;
+      tx.senderKey = sender;
+      tx.receiverKey = reciever;
+      tx.inputs = in;
+      tx.outputs = out;
+      if (unlockTime == 0) {
+      	tx.unlockTime = Blockchain::getHeight() + minimumTxLockTime;
+      }else {
+	if (unlockTime > Blockchain::getHeight()) {
+            tx.unlockTime = unlockTime;
+	}else {
+	    std::cout << "Bad unlock Time, Aborting!";
+            return Transaction badParams;
+	}
+      }
+      tx.timestamp = std::time(nullptr);
+      return tx;
+  }
+  // Sign basic TX
+  void signTx(Transaction rawTx, uint8_t* publicKey, uint8_t* privateKey)
+  {
+      sign(&rawTx[26], publicKey, privateKey, rawTx, 26); // Signature = 64 bytes, raw tx = 24 | total = 90 bytes
+  }
+  // Build Coinbase tx. No ins only a out becuase this is what create tx inputs.
+  uint8_t* buildCoinbaseTx(uint8_t* out, uint64_t amount)
+  {
+      // TODO
+  }
+
+  Blockheader createBlockHeader(std::string prevHash, uint64_t height, std::string publicKey)
+  {
+      Blockheader blockHeader;
+      blockHeader.version = Blockchain::getVersion(height);
+      blockHeader.nodePubKey = publicKey;
+      blockHeader.prevHash = prevHash;
+      blockHeader.timestamp = std::time(nullptr);
+      return blockHeader;
+  }
 }
