@@ -1,19 +1,19 @@
-# currency
-A c/c++ implementation of a blockchain based cryptocurrency. Join our discord for more info http://discord.gg/R3UhgCk
+# Aviro
+A c/c++ implementation of a blockchain based cryptocurrency featuring multiple chains, proof of node and no PoW! Join our discord for more info http://discord.gg/R3UhgCk
 
 ## TODO:
 - [ ] Fill out the todo list
 - [ ] **Blockchain**:
--   [ ] Store blockchain on drive rather than current implementatio where it is stored on ram! 
+-   [ ] Store blockchain on drive rather than current implementation where it is stored on ram! (WIP)
 - [ ] **P2p**:
-- [ ] make connections to peers
+- [ ] make connections to peers (WIP)
 - [ ] share blocks with peers
 - [ ] share transactions with peers
 - [ ] get blocks from peers
 - [ ] submit uptime proof
 - [ ] **Wallet**:
 - [ ] *(Wallet) Core*:
-- [ ] Create rawtx
+- [x] ~~Create rawtx
 - [ ] sign rawtx
 - [ ] scan blockchain for transactions
 - [ ] generate public & private keys
@@ -34,4 +34,4 @@ A c/c++ implementation of a blockchain based cryptocurrency. Join our discord fo
 - [ ] Make a nice Cli interface
 - [ ] **Database**:
 - [ ] Save Blockchain
-- [ ] (if not a full node) prune old transaction data
+
