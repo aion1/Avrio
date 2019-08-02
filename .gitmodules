@@ -1,3 +1,9 @@
 [submodule "include/openssl"]
 	path = include/openssl
 	url = https://github.com/openssl/openssl
+[submodule "include/libsodium-CMake"]
+	path = include/libsodium-CMake
+	url = https://github.com/Cyberunner23/libsodium-CMake
+[submodule "external/libsodium-CMake"]
+	path = external/libsodium-CMake
+	url = https://github.com/Cyberunner23/libsodium-CMake
