@@ -1,5 +1,5 @@
 # Aviro
-A c/c++ implementation of a blockchain based cryptocurrency featuring multiple chains, proof of node and no PoW! Join our discord for more info http://discord.gg/R3UhgCk
+A c/c++ implementation of a multi blockchain cryptocurrency featuring multiple chains, proof of node and no PoW! Join our discord for more info http://discord.gg/R3UhgCk
 
 ## TODO:
 - [ ] Fill out the todo list
