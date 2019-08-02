@@ -13,7 +13,7 @@ A c/c++ implementation of a blockchain based cryptocurrency featuring multiple c
 - [ ] submit uptime proof
 - [ ] **Wallet**:
 - [ ] *(Wallet) Core*:
-- [x] ~~Create rawtx
+- [x] ~~Create rawtx~~
 - [ ] sign rawtx
 - [ ] scan blockchain for transactions
 - [ ] generate public & private keys
