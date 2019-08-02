@@ -8,22 +8,20 @@
 #include <cstdio>
 #include <cstdlib>
 #include <lmdb++.h>
-
+#include <cassert>
+#include "rocksdb/db.h"
+#include "rocksdb/write_batch.h"
 
 void main() {
   if (notInitilised("database") {
   	std::cout << "Opening DB";
-  	auto env = lmdb::env::create();
-        env.set_mapsize(1UL * 1024UL * 1024UL * 1024UL); /* 1 GiB */
-        std::string path = getFolder() + "blockchain.mdb";
-        env.open(path, 0, 0664);
-  	heightIndex = getBlockHeight();
-  	if (heightIndex == 0) {
-    		Blockchain::Blockchain()
-  	}else{
-  		std::cout << "INFO: Current Block Index " + heightIndex;
-  	}
-  	setInitilised("database"); // TODO
+  	rocksdb::DB* db;
+        rocksdb::Options options;
+        options.create_if_missing = true;
+	std::string path = getFolder() + "blockchain.mdb";
+        rocksdb::Status status = rocksdb::DB::Open(options, path, &db);
+        assert(status.ok());	 	
+        setInitilised("database"); // TODO
   }
 }
 
