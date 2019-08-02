@@ -1,5 +1,6 @@
 #include <src/config.h>
-#incluce "peerlist.cpp"
+#incluce <src/p2p/peerlist.cpp>
+#include <src/p2p/mongoose.h> // Mongoose websocket library
 namespace p2p {
   bool launchsrv() {
     uint64_t peerIdTemp = genPeerId();
