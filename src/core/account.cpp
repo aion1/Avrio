@@ -12,5 +12,6 @@ struct account {
   will automatically detetct this and add the data to the transaction
   account address format:
   <prefix> {encoded public key} (account data)
+  */
 }
   
