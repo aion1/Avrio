@@ -13,5 +13,10 @@ struct account {
   account address format:
   <prefix> {encoded public key} (account data)
   */
+};
+struct container {
+  std::vector<account> accounts;
+  std::string publicKey;
+  std::string privateKey;
 }
   
