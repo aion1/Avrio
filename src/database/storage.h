@@ -1,3 +1,5 @@
+#include <src/core/block.h>
+
 class Storage {
 Public:
   char* getFolder();
