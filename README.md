@@ -2,6 +2,9 @@
 A c/c++ implementation of a multi blockchain cryptocurrency featuring multiple chains, proof of node and no PoW! Join our discord for more info http://discord.gg/R3UhgCk
 
 ## TODO:
+- [ ] refactor the code
+
+
 - [ ] Fill out the todo list
 - [ ] **Blockchain**:
 -   [ ] Store blockchain on drive rather than current implementation where it is stored on ram! (WIP)
