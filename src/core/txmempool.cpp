@@ -7,9 +7,9 @@ struct mempool {
     std::vector<tx_data> tx;  // tx details
 };
 
-void initMempool() {
-  mempool memPool;
+mempool initMempool() {
+  static mempool memPool;
   Block block = getBlockDataForHeight(Blockchain::getHeight()); // TODO: getBlockDataForHeight
   updateMempoolFromBlock(Block block);
-  return;
+  return memPool;
 }
