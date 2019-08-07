@@ -29,8 +29,7 @@ namespace Core
   }
   uint64_t getBlockReward(height)
   {
-    uint64_t baseReward = (200 + 50 * sin(height/150)); //https://cdn.discordapp.com/attachments/576732602686373888/590964203158896645/unknown.png
-    baseReward = baseReward * 1000000000; // Turn decimal place into atomic units
+    uint64_t baseReward = config::blockReward;
   }
   
 }
