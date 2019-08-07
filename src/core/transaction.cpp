@@ -2,7 +2,7 @@ struct txInput {
   std::string inputTx; // Hash of the transaction That created this input.
   uint8_t txOut-index; // Index of a output of the to-be-used transaction.
   uint64_t scriptSig; // The scriptSig of the block (https://en.bitcoin.it/wiki/Script)
-  uint64_t sequence_no = 0xFFFFFFFF; // Ignored (usually 0xFFFFFFFF) unless tx unlock time is > 0.
+  uint64_t sequence_no = 0xFFFFFFFF; // Ignored (usually 0xFFFFFFFF) unless tx unlock time is > 0. (this is the unlock time)
 };
 
 struct txOutput {
@@ -17,7 +17,7 @@ struct Transaction {
     std::vector<txInput> inputs;
     std::vector<txOutput> outputs;
     uint64_t unlockTime; // The height at which the coins unlock (become spendable) at.
-    std::string extraData = ''; // Extra data which can be bound to the transaction ( very small amount)
+    char extraData = nullptr; // Extra data which can be bound to the transaction (one byte)
     time_t timestamp;
 };
 
