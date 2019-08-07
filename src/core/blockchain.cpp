@@ -46,7 +46,7 @@ uint64_t Blockchain::getHeight() {
     return currentHeight;
 }
 
-uint8_t Blockchain::getVersion(height) {
+uint8_t Blockchain::getVersion(uint64_t height) {
   uint8_t i = 0;
   for(i < hard_forks.size(); i++;)
       if (height > hard_forks[i].height) {
