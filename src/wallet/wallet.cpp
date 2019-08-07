@@ -8,9 +8,9 @@
 #include "wallet.h"
 
 namespace wallet {
-  wallet_t* generateWallet(void) {
-    wallet_t *wallet = malloc(sizeof(wallet_t));
-    wallet->balance = 0;
+  wallet_t* createWallet(void) {
+     wallet_t *wallet = malloc(sizeof(wallet_t));
+     wallet.balance = 0;
      return wallet;
   }
 }
