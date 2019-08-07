@@ -19,7 +19,7 @@ namespace Core
       std::cout << "Provided Height: " + height;
       return false;
       break;
-   }elif (hash in chain) { // TODO: if hash in chain needs proper synitax.
+   }else if (hash in chain) { // TODO: if hash in chain needs proper synitax.
      std::cout << "ERROR: Block " + hash + "already exists!";
      return false;
      break;
