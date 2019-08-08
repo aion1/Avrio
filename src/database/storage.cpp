@@ -32,6 +32,8 @@ char* getFolder(){
 }
 bool createFolder(std::string path) {
 	fs::path P path + "/";
+	fs::create_directories(p / ".Avrio");
+	fs::path P path + "/.Avrio");
 	fs::create_directories(p / "db");
 	fs::create_directories(p / "Chains");
 	/* Full Node */
