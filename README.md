@@ -1,4 +1,6 @@
 # Aviro
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 A c/c++ implementation of a multi blockchain cryptocurrency featuring multiple chains, proof of node and no PoW! Join our discord for more info http://discord.gg/R3UhgCk
 
 ## TODO:
